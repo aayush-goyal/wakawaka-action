@@ -1,4 +1,4 @@
-name: "WakaWaka"
+name: "wakawaka-action"
 author: "Aayush Goyal <aayushgoyal.mps@gmail.com>"
 description: "Generate WakaTime stats chart and insert it into GitHub profile Markdown."
 inputs:
