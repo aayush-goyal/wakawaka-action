@@ -1,0 +1,25 @@
+name: "WakaWaka"
+author: "Aayush Goyal <aayushgoyal.mps@gmail.com>"
+description: "Generate WakaTime stats chart and insert it into GitHub profile Markdown."
+inputs:
+  GH_TOKEN:
+    description: "GitHub repository token."
+    required: true
+  WAKA_AUTH_TOKEN:
+    description: "Auth token of the user."
+    required: true
+  GH_WORKSPACE:
+    description: "GitHub repository name"
+    required: true
+  GH_ACTOR:
+    description: "GitHub username"
+    required: true
+  COMMIT_EMAIL:
+    description: "GitHub email"
+    required: true
+outputs:
+  svg:
+    description: "The SVG string to show the chart."
+runs:
+  using: "node20"
+  main: "src/index.js"
