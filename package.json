@@ -1,0 +1,15 @@
+{
+    "name": "wakawaka-action",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "repository": "https://github.com/aayush-goyal/wakawaka-action.git",
+    "author": "Aayush Goyal <aayushgoyal.mps@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "@actions/core": "^1.10.1",
+        "@actions/exec": "^1.1.1",
+        "@actions/github": "^6.0.0",
+        "axios": "^1.7.2"
+    }
+}
