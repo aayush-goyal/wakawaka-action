@@ -58,6 +58,7 @@ async function performGitCommit(workspace) {
 try {
     const wakaToken = core.getInput('WAKA_AUTH_TOKEN');
     const workspace = core.getInput('GH_WORKSPACE');
+    const wakaUsername = core.getInput('WAKA_USERNAME');
     const mdFilePath = `${workspace}/README.md`;
     const imgFolderPath = `${workspace}/img`;
 
@@ -90,7 +91,7 @@ try {
             currentMapConfig.set(imgName, true);
 
             const apiResponse = await axios.get(
-                `${API_BASE_URL}/charts/${statType}?range=${range}&chart_type=${chartType}&data_type=${dataType}&token=${wakaToken}`
+                `${API_BASE_URL}/charts/${statType}?username=${wakaUsername}&range=${range}&chart_type=${chartType}&data_type=${dataType}&token=${wakaToken}`
             );
             const chartSVG = apiResponse.data;
 
