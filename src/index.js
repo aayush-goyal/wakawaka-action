@@ -99,7 +99,7 @@ try {
                     const shieldImg = apiResponse.data.data;
 
                     if (statType === 'BEST_DAY') {
-                        mdContent.replace(
+                        mdContent = mdContent.replace(
                             '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->',
                             '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->' +
                                 '\n' +
@@ -108,7 +108,7 @@ try {
                                 ')'
                         );
                     } else {
-                        mdContent.replace(
+                        mdContent = mdContent.replace(
                             '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->',
                             '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->' +
                                 '\n' +
