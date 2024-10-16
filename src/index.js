@@ -103,14 +103,18 @@ try {
                             '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->',
                             '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->' +
                                 '\n' +
-                                shieldImg
+                                '![badge](' +
+                                shieldImg +
+                                ')'
                         );
                     } else {
                         mdContent.replace(
                             '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->',
                             '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->' +
                                 '\n' +
-                                shieldImg
+                                '![badge](' +
+                                shieldImg +
+                                ')'
                         );
                     }
                 } else {
