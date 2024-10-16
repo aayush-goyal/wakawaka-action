@@ -68,6 +68,65 @@ try {
 
     let mdContent = await fsPromises.readFile(mdFilePath, 'utf8');
 
+    // Stats Controller
+    const statConfigRegex = /<!-- WAKAWAKA_CONFIG__STATS_([A-Z_]+) -->/g;
+    const statsConfigs = mdContent.match(statConfigRegex);
+
+    for (let config of statsConfigs) {
+        const regex = /<!-- WAKAWAKA_CONFIG__STATS_([A-Z_]+) -->/;
+
+        const queryParams = config.match(regex);
+
+        if (queryParams) {
+            const statType = queryParams[1];
+
+            let endpoint;
+            if (statType === 'BEST_DAY') {
+                endpoint = 'best_day';
+            } else {
+                endpoint = 'daily_avg';
+            }
+
+            const apiUrl =
+                `${API_BASE_URL}/stats/` +
+                endpoint +
+                `?username=${wakaUsername}&token=${wakaToken}`;
+
+            try {
+                const apiResponse = await axios.get(apiUrl);
+
+                if (apiResponse.status === 200) {
+                    const shieldImg = apiResponse.data.data;
+
+                    if (statType === 'BEST_DAY') {
+                        mdContent.replace(
+                            '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->',
+                            '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->' +
+                                '\n' +
+                                shieldImg
+                        );
+                    } else {
+                        mdContent.replace(
+                            '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->',
+                            '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->' +
+                                '\n' +
+                                shieldImg
+                        );
+                    }
+                } else {
+                    console.error(
+                        'ERROR:',
+                        'Some issue happened.',
+                        apiResponse.data.message
+                    );
+                }
+            } catch (error) {
+                console.error('ERROR:', error.toString());
+            }
+        }
+    }
+
+    // Charts Controller
     const configRegex = /<!-- WAKAWAKA_CONFIG__ST=\d&CT=\d&DT=\d&R=\d -->/g;
     const configs = mdContent.match(configRegex);
 
