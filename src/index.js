@@ -74,7 +74,6 @@ try {
 
     for (let config of statsConfigs) {
         const regex = /<!-- WAKAWAKA_CONFIG__STATS_([A-Z_]+) -->/;
-
         const queryParams = config.match(regex);
 
         if (queryParams) {
@@ -98,24 +97,33 @@ try {
                 if (apiResponse.status === 200) {
                     const shieldImg = apiResponse.data.data;
 
-                    if (statType === 'BEST_DAY') {
+                    const configComment = `<!-- WAKAWAKA_CONFIG__STATS_${statType} -->`;
+                    const badgeRegex = new RegExp(
+                        `${configComment}\\s*!\\[badge\\]\\([^)]+\\)`
+                    );
+
+                    // Check if the badge already exists for the stat type
+                    if (badgeRegex.test(mdContent)) {
                         mdContent = mdContent.replace(
-                            '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->',
-                            '<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->' +
-                                '\n' +
-                                '![badge](' +
-                                shieldImg +
-                                ')'
+                            badgeRegex,
+                            `${configComment}\n![badge](${shieldImg})`
                         );
                     } else {
-                        mdContent = mdContent.replace(
-                            '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->',
-                            '<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->' +
-                                '\n' +
-                                '![badge](' +
-                                shieldImg +
-                                ')'
-                        );
+                        const configCommentIndex =
+                            mdContent.indexOf(configComment);
+                        const nextLine = mdContent
+                            .substring(
+                                configCommentIndex + configComment.length
+                            )
+                            .trim();
+
+                        if (nextLine === '' || nextLine.startsWith('<!--')) {
+                            // Add the badge below the config comment
+                            mdContent = mdContent.replace(
+                                configComment,
+                                `${configComment}\n![badge](${shieldImg})`
+                            );
+                        }
                     }
                 } else {
                     console.error(
