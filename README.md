@@ -1,6 +1,6 @@
-# WakaWaka - Coding Stats GitHub Action
+# Wakawaka - Coding Stats GitHub Action
 
-**WakaWaka - Coding Stats GitHub Action** is a simple and easy-to-use GitHub Action. [**WakaTime**](https://wakatime.com), allows developers to access and display their coding activity data in various visual formats. Whether you want to show coding stats as badges or generate rich charts to display your activity, this action can do it all. You can use the generated output directly on your GitHub profile.
+**Wakawaka - Coding Stats GitHub Action** is a simple and easy-to-use GitHub Action. [**WakaTime**](https://wakatime.com), allows developers to access and display their coding activity data in various visual formats. Whether you want to show coding stats as badges or generate rich charts to display your activity, this action can do it all. You can use the generated output directly on your GitHub profile.
 
 # Features
 - **Stats**: Generate shield badges for various coding stats.
@@ -13,7 +13,7 @@ The action interacts with this **[WakaTime API Wrapper](https://github.com/aayus
 
 # Workflow
 1. **Authentication**: You provide your WakaTime `username` and `auth_token`. The action uses these to access your WakaTime data.
-2. **Data Retrieval**: The action makes requests to the wrapper's API endpoints to retrieve data based on your specified parameters (e.g., stat type, chart type, and etc). Refer to [WakaWaka API](https://github.com/aayush-goyal/wakawaka/blob/master/README.md) docs to know more.
+2. **Data Retrieval**: The action makes requests to the wrapper's API endpoints to retrieve data based on your specified parameters (e.g., stat type, chart type, and etc). Refer to [Wakawaka API](https://github.com/aayush-goyal/wakawaka/blob/master/README.md) docs to know more.
 3. **Chart Generation**: The APIs can generate different types of charts such as bar charts, pie charts, and doughnut charts, depending on the data you wish to display.
 4. **Badge Creation**: The APIs can also create shield-style badges that can be added to your README to highlight your activity.
 5. **Display**: Once the charts and badges are generated, the action updates your GitHub profile with the visual content.
@@ -22,7 +22,7 @@ The action interacts with this **[WakaTime API Wrapper](https://github.com/aayus
 ## Prerequisites
 Before you can use the **Wakawaka GitHub Action**, you’ll need the following:
 - A **WakaTime** account (sign up at [WakaTime](https://wakatime.com/)).
-- Your **WakaTime API token**: You can get this token by visiting this [aayushgoyal - WakaWaka](https://aayushgoyal.in/wakawaka).
+- Your **WakaTime API token**: You can get this token by visiting this [aayushgoyal - Wakawaka](https://aayushgoyal.in/wakawaka).
 
 **NOTE:** Once you have generated the toke, copy and save it as you will need it later.
 
@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: WakaWaka Action
+      - name: Wakawaka Action
         uses: aayush-goyal/wakawaka-action@v1.2.3
 
         with:
@@ -65,7 +65,7 @@ Your action is now ready to use on your GitHub README profile. All you need to i
 
 ## Using Action on GitHub Profile
 
-WakaWaka works with special comments you define in the Markdown README file. To tell WakaWaka to insert either a stat or a chart you need three comments one after another on separate lines as shown below:
+Wakawaka works with special comments you define in the Markdown README file. To tell Wakawaka to insert either a stat or a chart you need three comments one after another on separate lines as shown below:
 ```
 <!-- WAKAWAKA_START -->
 <!-- WAKAWAKA_CONFIG__OPTION --> [1]
@@ -73,19 +73,19 @@ WakaWaka works with special comments you define in the Markdown README file. To 
 ```
 
 ### Badges
-Currently, WakaWaka supports only two types of badges:
+Currently, Wakawaka supports only two types of badges:
 1. Best Coding Day
 
     Replace `[1]` with `<!-- WAKAWAKA_CONFIG__STATS_BEST_DAY -->`
 
-    WakaWaka will automatically get the badge and insert it just below the [1] comment in your README file.
+    Wakawaka will automatically get the badge and insert it just below the [1] comment in your README file.
 
 2. Daily Coding Average
     
     Replace `[1]` with `<!-- WAKAWAKA_CONFIG__STATS_DAILY_AVG -->`
 
 ### Charts
-You can do a lot more when it comes to charts on WakaWaka.
+You can do a lot more when it comes to charts on Wakawaka.
 
 The basic comment for customizing the chart is as follows:
 
@@ -126,7 +126,7 @@ Based on the combinations you can generate almost all the kind of charts you wou
 <!-- WAKAWAKA_END -->
 ```
 
-You can also visit [WakaWaka - API](https://aayushgoyal.in/wakawaka) repo to learn more about the APIs the action uses behind the scenes and to play with them.
+You can also visit [Wakawaka - API](https://aayushgoyal.in/wakawaka) repo to learn more about the APIs the action uses behind the scenes and to play with them.
 
 # Future Plans
 Here’s a look at some of the exciting features I plan to implement in the future:
